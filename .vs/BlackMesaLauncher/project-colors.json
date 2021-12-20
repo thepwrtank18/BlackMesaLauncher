@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "be3f71b9-ca39-4435-9c21-c163c4fdd6bc": {
+      "ProjectGuid": "be3f71b9-ca39-4435-9c21-c163c4fdd6bc",
+      "DisplayName": "BlackMesaLauncher",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

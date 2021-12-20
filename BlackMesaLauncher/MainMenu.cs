@@ -7,7 +7,6 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.Devices;
 
 namespace BlackMesaLauncher
 {
