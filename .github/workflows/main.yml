@@ -1,0 +1,36 @@
+name: CI and Artifacts
+ 
+on: [push]
+ 
+jobs:
+  build:
+ 
+    runs-on: windows-latest
+ 
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code
+     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+      env:
+         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      env:
+         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+     
+    - name: Restore NuGet Packages
+      run: nuget restore BlackMesaLauncher.sln
+ 
+    - name: Build and Publish App
+      run: msbuild BlackMesaLauncher.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+ 
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2.3.1
+      env:
+         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      with:
+        name: BlackMesaLauncher
+        path: D:\a\BlackMesaLauncher\BlackMesaLauncher\BlackMesaLauncher\bin\Release
